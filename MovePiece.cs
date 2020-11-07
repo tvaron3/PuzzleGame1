@@ -54,13 +54,13 @@ public class MovePiece : MonoBehaviour
 
     }
 
-  /*  void RandomRotation()
+    void RandomRotation()
     {
         randomRot = Random.Range(minRot, maxRot);
         startRot = (90 * randomRot);
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, startRot);
     }
-    \*
+ 
     /*void RandomPosition() // makes sure pieces in inventory aren't always in the same position
     {
 
