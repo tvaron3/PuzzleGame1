@@ -61,19 +61,19 @@ public class MovePiece : MonoBehaviour
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, startRot);
     }
  
-    /*void RandomPosition() // makes sure pieces in inventory aren't always in the same position
+    void RandomPosition() // makes sure pieces in inventory aren't always in the same position
     {
 
         randomNum = Random.Range(minInvPos, maxInvPos);
         randomYLoc = 118.68f - 10 * randomNum;
-        invPos = new Vector2(invPos.x, 118.68f - 10 * randomNum);
+        invPos = new Vector2(invPos.x, 118.68f - 10 * randomYLoc);
         gameObject.transform.position = invPos;
 
 
     }
-\*
 
-    /*void OnTriggerEnter2D(Collider2D other) // two pieces in inventory are not on top of eachother
+
+    void OnTriggerEnter2D(Collider2D other) // two pieces in inventory are not on top of eachother
     {
         while (other.gameObject.transform.position == gameObject.transform.position)
         {
@@ -81,7 +81,7 @@ public class MovePiece : MonoBehaviour
         }
 
     }
-*/
+
     void Update()
     {
 
@@ -203,25 +203,22 @@ public class MovePiece : MonoBehaviour
 
     void invControl()
     {
-        if (yDiff < 110)
+        if (yDiff < 110) && (yDiff > -100)
         {
-
             if ((Input.GetAxis("Mouse ScrollWheel") > 0) && (pieceStatus == "idle"))
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y - 100f);
                 invPos = transform.position;
-
+                yDiff -= 10
                 moved = true;
 
             }
-        }
-        if (yDiff > -100)
-        {
+        
             if ((Input.GetAxis("Mouse ScrollWheel") < 0) && (pieceStatus == "idle"))
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y + 100f);
                 invPos = transform.position;
-
+                yDiff += 10
                 moved = true;
             }
         }
@@ -229,7 +226,6 @@ public class MovePiece : MonoBehaviour
         {
             transform.position = invPos;
             pieceStatus = "idle";
-
         }
 
     }
