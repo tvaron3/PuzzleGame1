@@ -40,8 +40,8 @@ public class MovePiece : MonoBehaviour
     void Start()
     {
         invPos = transform.position;
-      //RandomPosition();
-        //RandomRotation();
+        RandomPosition();
+        RandomRotation();
 
         pieceStatus = "idle";
         totalScore = 0;
